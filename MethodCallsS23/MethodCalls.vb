@@ -36,10 +36,15 @@ Module MethodCalls
 
         '    SumOf(7, 7)
         'Next
-        userRecord = "apple"
-        Console.WriteLine($"In Main: {userRecord}")
-        ReverseString(userRecord)
-        Console.WriteLine($"In Main: {userRecord}")
+
+        'userRecord = "apple"
+        'Console.WriteLine($"In Main: {userRecord}")
+        'ReverseString(userRecord)
+        'Console.WriteLine($"In Main: {userRecord}")
+
+        For i = 1 To 10
+            Console.WriteLine(RunningTotal(5))
+        Next
     End Sub
 
     Private Sub DoMath()
@@ -77,5 +82,19 @@ Module MethodCalls
         theString = "grape"
         Console.WriteLine($"In ReverseString: {StrReverse(theString)}")
     End Sub
+
+    ''' <summary>
+    ''' the keword Static is used to extend the lifetime of a local varable
+    ''' therefore preserving the the variables data for succesive calls
+    ''' </summary>
+    ''' <param name="currentNumber"></param>
+    ''' <returns></returns>
+    Function RunningTotal(currentNumber As Integer) As Integer
+        Static _runningTotal As Integer
+
+        _runningTotal += currentNumber
+
+        Return _runningTotal
+    End Function
 
 End Module
